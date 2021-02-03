@@ -28,6 +28,8 @@ function change_partyhorn() {
 let volume_number = document.getElementById("volume-number");
 let volume_slider = document.getElementById("volume-slider");
 let volume_icon = document.getElementById("volume-image");
+let horn_button = document.getElementById('honk-btn');
+let form = document.getElementById('party-horn-form');
 
 volume_number.addEventListener("input", input_volumenumber);
 volume_slider.addEventListener("input", input_volumeslider);
@@ -36,12 +38,14 @@ function input_volumenumber() {
   volume_number.value = volume_slider.value;
   horn_sound.volume = volume_number.value / 100;
   change_volumeicon();
+  check_disabledbutton();
 }
 
 function input_volumeslider() {
   volume_slider.value = volume_number.value;
   horn_sound.volume = volume_number.value / 100;
   change_volumeicon();
+  check_disabledbutton();
 }
 
 function change_volumeicon() {
@@ -57,4 +61,21 @@ function change_volumeicon() {
   else {
     volume_icon.src = "./assets/media/icons/volume-level-0.svg";
   }
+}
+
+function check_disabledbutton() {
+  if(volume_number.value == 0) {
+    horn_button.disabled = true;
+  }
+  else {
+    horn_button.disabled = false;
+  }
+}
+
+
+form.addEventListener("submit", submit_form);
+
+function submit_form(event) {
+  event.preventDefault();
+  horn_sound.play();
 }
