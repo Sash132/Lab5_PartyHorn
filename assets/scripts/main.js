@@ -10,15 +10,12 @@ party_horn.addEventListener("change", click_partyhorn);
 
 function click_airhorn() {
   sound_image.src = "./assets/media/images/air-horn.svg";
-  audio.src = "./assets/media/audio/air-horn.mp3";
 }
 
 function click_carhorn() {
   sound_image.src = "./assets/media/images/car.svg";
-  audio.src = "./assets/media/audio/car-horn.mp3";
 }
 
 function click_partyhorn() {
   audio.src = "./assets/media/audio/party-horn.mp3";
-  sound_image.src = "./assets/media/images/party-horn.svg";
 }
