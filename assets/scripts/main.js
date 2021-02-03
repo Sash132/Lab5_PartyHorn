@@ -1,54 +1,39 @@
 //main.js
-let air_horn = document.getElementById("radio-air-horn");
-let car_horn = document.getElementById("radio-car-horn");
-let party_horn = document.getElementById("radio-party-horn");
-let sound_image = document.getElementById("sound-image");
-let horn_sound = document.getElementById("horn-sound");
 
-air_horn.addEventListener("change", change_airhorn);
-car_horn.addEventListener("change", change_carhorn);
-party_horn.addEventListener("change", change_partyhorn);
+//This section manages the ideas behind having the volume number and
+//volume slider as each is updated while also performing certain
+//edge checks.
+const volume_number = document.getElementById("volume-number");
+const volume_slider = document.getElementById("volume-slider");
+const volume_icon = document.getElementById("volume-image");
+const horn_button = document.getElementById('honk-btn');
+const horn_sound = document.getElementById("horn-sound");
 
-function change_airhorn() {
-  horn_sound.src = "./assets/media/audio/air-horn.mp3";
-  sound_image.src = "./assets/media/images/air-horn.svg";
-}
+volume_number.addEventListener("input", update_volume_number);
+volume_slider.addEventListener("input", update_volume_slider);
 
-function change_carhorn() {
-  horn_sound.src = "./assets/media/audio/car-horn.mp3";
-  sound_image.src = "./assets/media/images/car.svg";
-}
-
-function change_partyhorn() {
-  horn_sound.src = "./assets/media/audio/party-horn.mp3";
-  sound_image.src = "./assets/media/images/party-horn.svg";
-}
-
-
-let volume_number = document.getElementById("volume-number");
-let volume_slider = document.getElementById("volume-slider");
-let volume_icon = document.getElementById("volume-image");
-let horn_button = document.getElementById('honk-btn');
-let form = document.getElementById('party-horn-form');
-
-volume_number.addEventListener("input", input_volumenumber);
-volume_slider.addEventListener("input", input_volumeslider);
-
-function input_volumenumber() {
+function update_volume_number() {
   volume_slider.value = volume_number.value;
   horn_sound.volume = volume_number.value / 100;
-  change_volumeicon();
-  check_disabledbutton();
+  change_volume_icon();
 }
 
-function input_volumeslider() {
+function update_volume_slider() {
   volume_number.value = volume_slider.value;
   horn_sound.volume = volume_number.value / 100;
-  change_volumeicon();
-  check_disabledbutton();
+  change_volume_icon();
 }
 
-function check_volumeicon() {
+function check_disabled_button() {
+  if(volume_number.value == 0) {
+    horn_button.disabled = true;
+  }
+  else {
+    horn_button.disabled = false;
+  }
+}
+
+function check_volume_icon() {
   if(volume_number.value >= 67) {
     volume_icon.src = "./assets/media/icons/volume-level-3.svg";
   }
@@ -61,17 +46,39 @@ function check_volumeicon() {
   else {
     volume_icon.src = "./assets/media/icons/volume-level-0.svg";
   }
+  
+  check_disabled_button();
 }
 
-function check_disabledbutton() {
-  if(volume_number.value <= 0) {
-    horn_button.disabled = true;
-  }
-  else {
-    horn_button.disabled = false;
-  }
+//This sections checks for and changes images and sounds related to the
+//different types of horns.
+const airhorn = document.getElementById("radio-air-horn");
+const carhorn = document.getElementById("radio-car-horn");
+const partyhorn = document.getElementById("radio-party-horn");
+const sound_image = document.getElementById("sound-image");
+
+airhorn.addEventListener("change", change_to_airhorn);
+carhorn.addEventListener("change", change_to_carhorn);
+partyhorn.addEventListener("change", change_to_partyhorn);
+
+function change_to_airhorn() {
+  horn_sound.src = "./assets/media/audio/air-horn.mp3";
+  sound_image.src = "./assets/media/images/air-horn.svg";
 }
 
+function change_to_carhorn() {
+  horn_sound.src = "./assets/media/audio/car-horn.mp3";
+  sound_image.src = "./assets/media/images/car.svg";
+}
+
+function change_to_partyhorn() {
+  horn_sound.src = "./assets/media/audio/party-horn.mp3";
+  sound_image.src = "./assets/media/images/party-horn.svg";
+}
+
+//This section deals with submitting forms and making sure
+//that the audio file is played.
+const form = document.getElementById('party-horn-form');
 
 form.addEventListener("submit", submit_form);
 
