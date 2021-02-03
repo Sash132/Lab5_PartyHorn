@@ -8,23 +8,23 @@ let party_horn = document.getElementById("radio-party-horn");
 let sound_image = document.getElementById("sound-image");
 let horn_sound = document.getElementById("horn-sound");
 
-air_horn.addEventListener("change", change_airhorn);
-car_horn.addEventListener("change", change_carhorn);
-party_horn.addEventListener("change", change_partyhorn);
+air_horn.addEventListener("change", change_horn);
+car_horn.addEventListener("change", change_horn);
+party_horn.addEventListener("change", change_horn);
 
-function change_airhorn() {
-  horn_sound.src = "./assets/media/audio/air-horn.mp3";
-  sound_image.src = "./assets/media/images/air-horn.svg";
-}
-
-function change_carhorn() {
-  horn_sound.src = "./assets/media/audio/car-horn.mp3";
-  sound_image.src = "./assets/media/images/car.svg";
-}
-
-function change_partyhorn() {
-  horn_sound.src = "./assets/media/audio/party-horn.mp3";
-  sound_image.src = "./assets/media/images/party-horn.svg";
+function change_horn() {
+  if(air_horn.checked) {
+    horn_sound.src = "./assets/media/audio/air-horn.mp3";
+    sound_image.src = "./assets/media/images/air-horn.svg";
+  } 
+  else if(car_horn.checked) {
+    horn_sound.src = "./assets/media/audio/car-horn.mp3";
+    sound_image.src = "./assets/media/images/car.svg";
+  } 
+  else if(party_horn.checked) {
+    horn_sound.src = "./assets/media/audio/party-horn.mp3";
+    sound_image.src = "./assets/media/images/party-horn.svg";
+  }
 }
 
 //This section manages the ideas behind having the volume number and
