@@ -4,9 +4,9 @@ let car_horn = document.getElementById("radio-car-horn");
 let party_horn = document.getElementById("radio-party-horn");
 let sound_image = document.getElementById("sound-image");
 
-air_horn.addEventListener("click", click_airhorn);
-car_horn.addEventListener("click", click_carhorn);
-party_horn.addEventListener("click", click_partyhorn);
+air_horn.addEventListener("change", click_airhorn);
+car_horn.addEventListener("change", click_carhorn);
+party_horn.addEventListener("change", click_partyhorn);
 
 function click_airhorn() {
   sound_image.src = "./assets/media/images/air-horn.svg";
