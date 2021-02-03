@@ -42,17 +42,16 @@ function update_volume_number() {
   volume_slider.value = volume_number.value;
   horn_sound.volume = volume_number.value / 100;
   change_volume_icon();
-  check_disabled_button();
 }
 
 function update_volume_slider() {
   volume_number.value = volume_slider.value;
   horn_sound.volume = volume_number.value / 100;
   change_volume_icon();
-  check_disabled_button();
 }
 
 function change_volume_icon() {
+  horn_button.disabled = false;
   if(volume_number.value >= 67) {
     volume_icon.src = "./assets/media/icons/volume-level-3.svg";
   }
@@ -64,15 +63,7 @@ function change_volume_icon() {
   }
   else {
     volume_icon.src = "./assets/media/icons/volume-level-0.svg";
-  }
-}
-
-function check_disabled_button() {
-  if(volume_number.value == 0) {
     horn_button.disabled = true;
-  }
-  else {
-    horn_button.disabled = false;
   }
 }
 
