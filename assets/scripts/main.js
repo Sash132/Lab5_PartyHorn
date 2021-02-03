@@ -35,24 +35,24 @@ let volume_slider = document.getElementById("volume-slider");
 let volume_icon = document.getElementById("volume-image");
 let horn_button = document.getElementById('honk-btn');
 
-volume_number.addEventListener("input", input_volumenumber);
-volume_slider.addEventListener("input", input_volumeslider);
+volume_number.addEventListener("input", update_volume_number);
+volume_slider.addEventListener("input", update_volume_slider);
 
-function input_volumenumber() {
+function update_volume_number() {
   volume_slider.value = volume_number.value;
   horn_sound.volume = volume_number.value / 100;
-  change_volumeicon();
-  check_disabledbutton();
+  change_volume_icon();
+  check_disabled_button();
 }
 
-function input_volumeslider() {
+function update_volume_slider() {
   volume_number.value = volume_slider.value;
   horn_sound.volume = volume_number.value / 100;
-  change_volumeicon();
-  check_disabledbutton();
+  change_volume_icon();
+  check_disabled_button();
 }
 
-function change_volumeicon() {
+function change_volume_icon() {
   if(volume_number.value >= 67) {
     volume_icon.src = "./assets/media/icons/volume-level-3.svg";
   }
@@ -67,7 +67,7 @@ function change_volumeicon() {
   }
 }
 
-function check_disabledbutton() {
+function check_disabled_button() {
   if(volume_number.value == 0) {
     horn_button.disabled = true;
   }
