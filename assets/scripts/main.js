@@ -80,9 +80,9 @@ function check_disabled_button() {
 //that the audio file is played.
 let form = document.getElementById('party-horn-form');
 
-form.addEventListener("submit", submit_form);
+form.addEventListener("submit", play_sound);
 
-function submit_form(event) {
+function play_sound(event) {
   event.preventDefault();
   horn_sound.play();
 }
