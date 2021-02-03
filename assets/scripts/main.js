@@ -35,14 +35,14 @@ volume_number.addEventListener("input", input_volumenumber);
 volume_slider.addEventListener("input", input_volumeslider);
 
 function input_volumenumber() {
-  volume_number.value = volume_slider.value;
+  volume_slider.value = volume_number.value;
   horn_sound.volume = volume_number.value / 100;
   change_volumeicon();
   check_disabledbutton();
 }
 
 function input_volumeslider() {
-  volume_slider.value = volume_number.value;
+  volume_number.value = volume_slider.value;
   horn_sound.volume = volume_number.value / 100;
   change_volumeicon();
   check_disabledbutton();
