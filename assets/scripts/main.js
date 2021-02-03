@@ -27,6 +27,7 @@ function change_partyhorn() {
 
 let volume_number = document.getElementById("volume-number");
 let volume_slider = document.getElementById("volume-slider");
+let volume_icon = document.getElementById("volume-image");
 
 volume_number.addEventListener("input", input_volumenumber);
 volume_slider.addEventListener("input", input_volumeslider);
@@ -34,9 +35,26 @@ volume_slider.addEventListener("input", input_volumeslider);
 function input_volumenumber() {
   volume_number.value = volume_slider.value;
   horn_sound.volume = volume_number.value / 100;
+  change_volumeicon();
 }
 
 function input_volumeslider() {
   volume_slider.value = volume_number.value;
-  horn_sound.volume = volume_slider.value / 100;
+  horn_sound.volume = volume_number.value / 100;
+  change_volumeicon();
+}
+
+function change_volumeicon() {
+  if(volume_number.value >= 67) {
+    volume_icon.src = "./assets/media/icons/volume-level-3.svg";
+  }
+  else if(volume_number.value >= 34) {
+    volume_icon.src = "./assets/media/icons/volume-level-2.svg";
+  }
+  else if(volume_number.value >= 1) {
+    volume_icon.src = "./assets/media/icons/volume-level-1.svg";
+  }
+  else {
+    volume_icon.src = "./assets/media/icons/volume-level-0.svg";
+  }
 }
