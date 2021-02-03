@@ -17,5 +17,5 @@ function click_carhorn() {
 }
 
 function click_partyhorn() {
-  audio.src = "./assets/media/audio/party-horn.mp3";
+  sound_image.src = "./assets/media/images/party-horn.svg";
 }
