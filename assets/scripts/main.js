@@ -48,7 +48,7 @@ function input_volumeslider() {
   check_disabledbutton();
 }
 
-function change_volumeicon() {
+function check_volumeicon() {
   if(volume_number.value >= 67) {
     volume_icon.src = "./assets/media/icons/volume-level-3.svg";
   }
@@ -64,7 +64,7 @@ function change_volumeicon() {
 }
 
 function check_disabledbutton() {
-  if(volume_number.value == 0) {
+  if(volume_number.value <= 0) {
     horn_button.disabled = true;
   }
   else {
